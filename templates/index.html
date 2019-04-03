@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" >
+	<head>
+		<meta charset="UTF-8">
+		<title>Giovanni</title>
+		<link rel="stylesheet" href="static/css/reset.min.css">
+		<link rel='stylesheet' href='static/css/font-awesome.min.css'>
+		<link href='static/css/main.css' rel='stylesheet' type='text/css'>
+		<link rel="shortcut icon" type="image/png" href="https://img.icons8.com/ios/50/000000/english-mustache-filled.png"/>
+	</head>
+	<body>
+		<!--
+	A concept for a chat interface.
+
+	Try writing a new message! :)
+
+	Follow me here:
+	Twitter: https://twitter.com/thatguyemil
+	Codepen: https://codepen.io/emilcarlsson/
+	Website: http://emilcarlsson.se/
+	-->
+	<div id="frame">
+		<div class="content">
+			<div class="contact-profile">
+				<!-- <img src="http://emilcarlsson.se/assets/harveyspecter.png" alt="" /> -->
+				<p>Giovanni</p>
+				<div class="social-media">
+					<i id="infoBtn" class="fa fa-info-circle" aria-hidden="true"></i>
+				</div>
+				
+			</div>
+			<div class="messages">
+				<ul>
+					<li class="received"><p>Hej u hungry?</p></li>
+				<!-- messages will be displayed here -->	
+				</ul>
+			</div>
+			<div class="messages debug" style="display:none">
+					<ul>
+						<li class="received"><p>Hej u hungry?</p></li>
+					<!-- messages will be displayed here -->	
+					</ul>
+				</div>
+			<div class="message-input">
+				<div class="wrap">
+				<textarea id="textInput" type="text" placeholder="Write your message..."></textarea>
+				<button class="speak"><i class="fa fa-volume-off" aria-hidden="true"></i></button>
+				<button class="record"><i class="fa fa-microphone-slash" aria-hidden="true"></i></button>
+				<button class="submit"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src='https://code.responsivevoice.org/responsivevoice.js'></script>
+	<script src="static/js/main.js"></script>
+	</body>
+</html>
