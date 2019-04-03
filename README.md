@@ -52,6 +52,3 @@ There are two interfaces, currently:
 
 - Command-line interface: The pipeline.py module allows to be run from the terminal. Is prepared to process .wav and .txt.
 
-In order to test the interfaces, there are some .wav files in the Download section of the bitbucket repository ([pot_tea.wav](https://bitbucket.org/nlp_miis_upf/chat_bot_repo/downloads/pot_tea.wav), [chicken_leg.wav](https://bitbucket.org/nlp_miis_upf/chat_bot_repo/downloads/pot_tea.wav), [rice_bowls.wav.wav](https://bitbucket.org/nlp_miis_upf/chat_bot_repo/downloads/rice_bowls.wav)).
-
-Also you'll find there our initial presentation of the project: [UPtoD8 chat bot.pptx](https://bitbucket.org/nlp_miis_upf/chat_bot_repo/downloads/UPtoD8%20chat%20bot.pptx).
