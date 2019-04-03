@@ -1,0 +1,550 @@
+@prefix : <http://www.semanticweb.org/ontologies/2019/0/project_giovanni#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/ontologies/2019/0/project_giovanni> .
+
+<http://www.semanticweb.org/ontologies/2019/0/project_giovanni> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/ontologies/2019/0/project_giovanni#hasIngredient
+:hasIngredient rdf:type owl:ObjectProperty ;
+               rdfs:domain :Recipe ;
+               rdfs:range :Food .
+
+
+###  http://www.semanticweb.org/ontologies/2019/0/project_giovanni#hasIngredientAvailable
+:hasIngredientAvailable rdf:type owl:ObjectProperty ;
+                        rdfs:subPropertyOf owl:topObjectProperty ;
+                        rdfs:domain :Person ;
+                        rdfs:range :Food .
+
+
+###  http://www.semanticweb.org/ontologies/2019/0/project_giovanni#isCuisineType
+:isCuisineType rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/ontologies/2019/0/project_giovanni#likesCuisine
+:likesCuisine rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf owl:topObjectProperty ;
+              rdfs:domain :Person ;
+              rdfs:range :Cuisine .
+
+
+###  http://www.semanticweb.org/ontologies/2019/0/project_giovanni#likesFood
+:likesFood rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf owl:topObjectProperty ;
+           rdfs:domain :Person ;
+           rdfs:range :Food .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.semanticweb.org/ontologies/2019/0/project_giovanni#hasRelatedUrl
+:hasRelatedUrl rdf:type owl:DatatypeProperty ;
+               rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/ontologies/2019/0/project_giovanni#quantity
+:quantity rdf:type owl:DatatypeProperty ;
+          rdfs:domain :Food .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/ontologies/2019/0/project_giovanni#Action
+:Action rdf:type owl:Class ;
+        rdfs:label "action" .
+
+
+###  http://www.semanticweb.org/ontologies/2019/0/project_giovanni#AfricanCuisine
+:AfricanCuisine rdf:type owl:Class ;
+                rdfs:subClassOf :Cuisine ;
+                rdfs:label "african" ,
+                           "african cuisine" .
+
+
+###  http://www.semanticweb.org/ontologies/2019/0/project_giovanni#AmericanCuisine
+:AmericanCuisine rdf:type owl:Class ;
+                 rdfs:subClassOf :Cuisine ;
+                 rdfs:label "american" ,
+                            "american cuisine" .
+
+
+###  http://www.semanticweb.org/ontologies/2019/0/project_giovanni#Animal
+:Animal rdf:type owl:Class ;
+        rdfs:subClassOf :Raw_food ;
+        rdfs:label "animal" .
+
+
+###  http://www.semanticweb.org/ontologies/2019/0/project_giovanni#AsianCuisine
+:AsianCuisine rdf:type owl:Class ;
+              rdfs:subClassOf :Cuisine ;
+              rdfs:label "asian" ,
+                         "asian cuisine" .
+
+
+###  http://www.semanticweb.org/ontologies/2019/0/project_giovanni#Butter
+:Butter rdf:type owl:Class ;
+        rdfs:subClassOf :Dairy ;
+        rdfs:label "butter" .
+
+
+###  http://www.semanticweb.org/ontologies/2019/0/project_giovanni#Cheese
+:Cheese rdf:type owl:Class ;
+        rdfs:subClassOf :Dairy ;
+        rdfs:label "cheese" .
+
+
+###  http://www.semanticweb.org/ontologies/2019/0/project_giovanni#Chicken
+:Chicken rdf:type owl:Class ;
+         rdfs:subClassOf :Meat ;
+         rdfs:label "chicken" .
+
+
+###  http://www.semanticweb.org/ontologies/2019/0/project_giovanni#Cuisine
+:Cuisine rdf:type owl:Class ;
+         rdfs:label "cuisine" .
+
+
+###  http://www.semanticweb.org/ontologies/2019/0/project_giovanni#Dairy
+:Dairy rdf:type owl:Class ;
+       rdfs:subClassOf :Animal ;
+       rdfs:label "dairy" .
+
+
+###  http://www.semanticweb.org/ontologies/2019/0/project_giovanni#EuropeanCuisine
+:EuropeanCuisine rdf:type owl:Class ;
+                 rdfs:subClassOf :Cuisine ;
+                 rdfs:label "european" ,
+                            "european cuisine" .
+
+
+###  http://www.semanticweb.org/ontologies/2019/0/project_giovanni#Fish
+:Fish rdf:type owl:Class ;
+      rdfs:subClassOf :Animal ;
+      rdfs:label "fish" .
+
+
+###  http://www.semanticweb.org/ontologies/2019/0/project_giovanni#Food
+:Food rdf:type owl:Class ;
+      rdfs:label "food" .
+
+
+###  http://www.semanticweb.org/ontologies/2019/0/project_giovanni#FrenchCuisine
+:FrenchCuisine rdf:type owl:Class ;
+               rdfs:subClassOf :EuropeanCuisine ;
+               rdfs:label "french" ,
+                          "french cuisine" .
+
+
+###  http://www.semanticweb.org/ontologies/2019/0/project_giovanni#Fruit
+:Fruit rdf:type owl:Class ;
+       rdfs:subClassOf :Vegetable ;
+       rdfs:label "fruit" .
+
+
+###  http://www.semanticweb.org/ontologies/2019/0/project_giovanni#Garlic
+:Garlic rdf:type owl:Class ;
+        rdfs:subClassOf :Vegetable ;
+        rdfs:label "garlic" .
+
+
+###  http://www.semanticweb.org/ontologies/2019/0/project_giovanni#Glass
+:Glass rdf:type owl:Class ;
+       rdfs:subClassOf :Measure ;
+       rdfs:label "glass" .
+
+
+###  http://www.semanticweb.org/ontologies/2019/0/project_giovanni#Gram
+:Gram rdf:type owl:Class ;
+      rdfs:subClassOf :Measure ;
+      rdfs:label "gram" .
+
+
+###  http://www.semanticweb.org/ontologies/2019/0/project_giovanni#Green_bean
+:Green_bean rdf:type owl:Class ;
+            rdfs:subClassOf :Vegetable ;
+            rdfs:label "green bean" .
+
+
+###  http://www.semanticweb.org/ontologies/2019/0/project_giovanni#IndianCuisine
+:IndianCuisine rdf:type owl:Class ;
+               rdfs:subClassOf :AsianCuisine ;
+               rdfs:label "indian" ,
+                          "indian cuisine" .
+
+
+###  http://www.semanticweb.org/ontologies/2019/0/project_giovanni#ItalianCuisine
+:ItalianCuisine rdf:type owl:Class ;
+                rdfs:subClassOf :EuropeanCuisine ;
+                rdfs:label "italian" ,
+                           "italian cuisine" .
+
+
+###  http://www.semanticweb.org/ontologies/2019/0/project_giovanni#JapaneseCuisine
+:JapaneseCuisine rdf:type owl:Class ;
+                 rdfs:subClassOf :AsianCuisine ;
+                 rdfs:label "japanese" ,
+                            "japanese cuisine" .
+
+
+###  http://www.semanticweb.org/ontologies/2019/0/project_giovanni#Kilogram
+:Kilogram rdf:type owl:Class ;
+          rdfs:subClassOf :Measure ;
+          rdfs:label "kilogram" .
+
+
+###  http://www.semanticweb.org/ontologies/2019/0/project_giovanni#Lima_bean
+:Lima_bean rdf:type owl:Class ;
+           rdfs:subClassOf :Vegetable ;
+           rdfs:label "lima bean" .
+
+
+###  http://www.semanticweb.org/ontologies/2019/0/project_giovanni#Litre
+:Litre rdf:type owl:Class ;
+       rdfs:subClassOf :Measure ;
+       rdfs:label "litre" .
+
+
+###  http://www.semanticweb.org/ontologies/2019/0/project_giovanni#Measure
+:Measure rdf:type owl:Class ;
+         rdfs:subClassOf [ rdf:type owl:Restriction ;
+                           owl:onProperty :quantity ;
+                           owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                           owl:onDataRange xsd:float
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :quantity ;
+                           owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                           owl:onDataRange xsd:nonNegativeInteger
+                         ] ;
+         rdfs:label "measure" .
+
+
+###  http://www.semanticweb.org/ontologies/2019/0/project_giovanni#Meat
+:Meat rdf:type owl:Class ;
+      rdfs:subClassOf :Animal ;
+      rdfs:label "meat" .
+
+
+###  http://www.semanticweb.org/ontologies/2019/0/project_giovanni#Meat_Brooth
+:Meat_Brooth rdf:type owl:Class ;
+             rdfs:subClassOf :Product ;
+             rdfs:label "meat broth" .
+
+
+###  http://www.semanticweb.org/ontologies/2019/0/project_giovanni#Milk
+:Milk rdf:type owl:Class ;
+      rdfs:subClassOf :Dairy ;
+      rdfs:label "milk" .
+
+
+###  http://www.semanticweb.org/ontologies/2019/0/project_giovanni#Milligram
+:Milligram rdf:type owl:Class ;
+           rdfs:subClassOf :Measure ;
+           rdfs:label "milligram" .
+
+
+###  http://www.semanticweb.org/ontologies/2019/0/project_giovanni#Millilitre
+:Millilitre rdf:type owl:Class ;
+            rdfs:subClassOf :Measure ;
+            rdfs:label "millilitre" .
+
+
+###  http://www.semanticweb.org/ontologies/2019/0/project_giovanni#Oil
+:Oil rdf:type owl:Class ;
+     rdfs:subClassOf :Product ;
+     rdfs:label "oil" .
+
+
+###  http://www.semanticweb.org/ontologies/2019/0/project_giovanni#Olive_oil
+:Olive_oil rdf:type owl:Class ;
+           rdfs:subClassOf :Oil ;
+           rdfs:label "olive oil" .
+
+
+###  http://www.semanticweb.org/ontologies/2019/0/project_giovanni#Onion
+:Onion rdf:type owl:Class ;
+       rdfs:subClassOf :Vegetable .
+
+
+###  http://www.semanticweb.org/ontologies/2019/0/project_giovanni#Paprika
+:Paprika rdf:type owl:Class ;
+         rdfs:subClassOf :Spice ;
+         rdfs:label "paprika" .
+
+
+###  http://www.semanticweb.org/ontologies/2019/0/project_giovanni#Parmesan_Cheese
+:Parmesan_Cheese rdf:type owl:Class ;
+                 rdfs:subClassOf :Cheese ;
+                 rdfs:label "parmesan cheese",
+                            "parmesan".
+
+
+###  http://www.semanticweb.org/ontologies/2019/0/project_giovanni#Person
+:Person rdf:type owl:Class ;
+        rdfs:label "person" .
+
+
+###  http://www.semanticweb.org/ontologies/2019/0/project_giovanni#PeruvianCuisine
+:PeruvianCuisine rdf:type owl:Class ;
+                 rdfs:subClassOf :AmericanCuisine ;
+                 rdfs:label "peruvian" ,
+                            "peruvian cuisine" .
+
+
+###  http://www.semanticweb.org/ontologies/2019/0/project_giovanni#Pork
+:Pork rdf:type owl:Class ;
+      rdfs:subClassOf :Meat ;
+      rdfs:label "pork" .
+
+
+###  http://www.semanticweb.org/ontologies/2019/0/project_giovanni#Product
+:Product rdf:type owl:Class ;
+         rdfs:subClassOf :Food ;
+         rdfs:label "product" .
+
+
+###  http://www.semanticweb.org/ontologies/2019/0/project_giovanni#Rabbit
+:Rabbit rdf:type owl:Class ;
+        rdfs:subClassOf :Meat ;
+        rdfs:label "rabbit" .
+
+
+###  http://www.semanticweb.org/ontologies/2019/0/project_giovanni#Raw_food
+:Raw_food rdf:type owl:Class ;
+          rdfs:subClassOf :Food ;
+          rdfs:label "raw food",
+                     "raw".
+
+
+###  http://www.semanticweb.org/ontologies/2019/0/project_giovanni#Recipe
+:Recipe rdf:type owl:Class ;
+        rdfs:subClassOf [ rdf:type owl:Restriction ;
+                          owl:onProperty :hasIngredient ;
+                          owl:someValuesFrom :Food
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :isCuisineType ;
+                          owl:someValuesFrom :Cuisine
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :hasRelatedUrl ;
+                          owl:someValuesFrom xsd:string
+                        ] ;
+        rdfs:label "recipe" .
+
+
+###  http://www.semanticweb.org/ontologies/2019/0/project_giovanni#Rice
+:Rice rdf:type owl:Class ;
+      rdfs:subClassOf :Vegetable ;
+      rdfs:label "rice" .
+
+
+###  http://www.semanticweb.org/ontologies/2019/0/project_giovanni#Rosemary
+:Rosemary rdf:type owl:Class ;
+          rdfs:subClassOf :Spice ;
+          rdfs:label "rosemary" .
+
+
+###  http://www.semanticweb.org/ontologies/2019/0/project_giovanni#Saffron
+:Saffron rdf:type owl:Class ;
+         rdfs:subClassOf :Spice ;
+         rdfs:label "saffron" .
+
+
+###  http://www.semanticweb.org/ontologies/2019/0/project_giovanni#Shrimp
+:Shrimp rdf:type owl:Class ;
+        rdfs:subClassOf :Fish ;
+        rdfs:label "shrimp" .
+
+
+###  http://www.semanticweb.org/ontologies/2019/0/project_giovanni#Spice
+:Spice rdf:type owl:Class ;
+       rdfs:subClassOf :Vegetable ;
+       rdfs:label "spice" .
+
+
+###  http://www.semanticweb.org/ontologies/2019/0/project_giovanni#Tablespoon
+:Tablespoon rdf:type owl:Class ;
+            rdfs:subClassOf :Measure ;
+            rdfs:label "tablespoon" .
+
+
+###  http://www.semanticweb.org/ontologies/2019/0/project_giovanni#Tomato
+:Tomato rdf:type owl:Class ;
+        rdfs:subClassOf :Vegetable ;
+        rdfs:label "tomato" .
+
+
+###  http://www.semanticweb.org/ontologies/2019/0/project_giovanni#Unit
+:Unit rdf:type owl:Class ;
+      rdfs:subClassOf :Measure ;
+      rdfs:label "unit" .
+
+
+###  http://www.semanticweb.org/ontologies/2019/0/project_giovanni#Vegetable
+:Vegetable rdf:type owl:Class ;
+           rdfs:subClassOf :Raw_food ;
+           rdfs:label "vegetable" .
+
+
+###  http://www.semanticweb.org/ontologies/2019/0/project_giovanni#White_Wine
+:White_Wine rdf:type owl:Class ;
+            rdfs:subClassOf :Product ;
+            rdfs:label "white wine" .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.org/ontologies/2019/0/project_giovanni#Paella
+:Paella rdf:type owl:NamedIndividual ,
+                 :EuropeanCuisine ,
+                 :Recipe ;
+        :hasIngredient :Paella_Ingredient1 ,
+                       :Paella_Ingredient10 ,
+                       :Paella_Ingredient2 ,
+                       :Paella_Ingredient3 ,
+                       :Paella_Ingredient4 ,
+                       :Paella_Ingredient5 ,
+                       :Paella_Ingredient6 ,
+                       :Paella_Ingredient7 ,
+                       :Paella_Ingredient8 ,
+                       :Paella_Ingredient9 ;
+        rdfs:label "paella valenciana" ;
+        :hasRelatedUrl "https://www.lafallera.es/recetas/paella-valenciana/" .
+
+
+###  http://www.semanticweb.org/ontologies/2019/0/project_giovanni#Paella_Ingredient1
+:Paella_Ingredient1 rdf:type owl:NamedIndividual ,
+                             :Gram ,
+                             :Rice ;
+                    :quantity 400 .
+
+
+###  http://www.semanticweb.org/ontologies/2019/0/project_giovanni#Paella_Ingredient10
+:Paella_Ingredient10 rdf:type owl:NamedIndividual ,
+                              :Rosemary .
+
+
+###  http://www.semanticweb.org/ontologies/2019/0/project_giovanni#Paella_Ingredient2
+:Paella_Ingredient2 rdf:type owl:NamedIndividual ,
+                             :Chicken ,
+                             :Unit ;
+                    :quantity 1 .
+
+
+###  http://www.semanticweb.org/ontologies/2019/0/project_giovanni#Paella_Ingredient3
+:Paella_Ingredient3 rdf:type owl:NamedIndividual ,
+                             :Gram ,
+                             :Rabbit ;
+                    :quantity 500 .
+
+
+###  http://www.semanticweb.org/ontologies/2019/0/project_giovanni#Paella_Ingredient4
+:Paella_Ingredient4 rdf:type owl:NamedIndividual ,
+                             :Gram ,
+                             :Green_bean ;
+                    :quantity 200 .
+
+
+###  http://www.semanticweb.org/ontologies/2019/0/project_giovanni#Paella_Ingredient5
+:Paella_Ingredient5 rdf:type owl:NamedIndividual ,
+                             :Gram ,
+                             :Lima_bean ;
+                    :quantity 100 .
+
+
+###  http://www.semanticweb.org/ontologies/2019/0/project_giovanni#Paella_Ingredient6
+:Paella_Ingredient6 rdf:type owl:NamedIndividual ,
+                             :Gram ,
+                             :Tomato ;
+                    :quantity 100 .
+
+
+###  http://www.semanticweb.org/ontologies/2019/0/project_giovanni#Paella_Ingredient7
+:Paella_Ingredient7 rdf:type owl:NamedIndividual ,
+                             :Olive_oil ,
+                             :Tablespoon ;
+                    :quantity 6 .
+
+
+###  http://www.semanticweb.org/ontologies/2019/0/project_giovanni#Paella_Ingredient8
+:Paella_Ingredient8 rdf:type owl:NamedIndividual ,
+                             :Saffron .
+
+
+###  http://www.semanticweb.org/ontologies/2019/0/project_giovanni#Paella_Ingredient9
+:Paella_Ingredient9 rdf:type owl:NamedIndividual ,
+                             :Paprika .
+
+
+###  http://www.semanticweb.org/ontologies/2019/0/project_giovanni#Risotto
+:Risotto rdf:type owl:NamedIndividual ,
+                  :ItalianCuisine ,
+                  :Recipe ;
+         :hasIngredient :Risotto_Ingredient1 ,
+                        :Risotto_Ingredient2 ,
+                        :Risotto_Ingredient3 ,
+                        :Risotto_Ingredient4 ,
+                        :Risotto_Ingredient5 ,
+                        :Risotto_Ingredient6 ;
+         rdfs:label "risotto" ;
+         :hasRelatedUrl "http://www.academiabarilla.it/ricette/emilia-romagna/risotto-alla-parmigiana.aspx" .
+
+
+###  http://www.semanticweb.org/ontologies/2019/0/project_giovanni#Risotto_Ingredient1
+:Risotto_Ingredient1 rdf:type owl:NamedIndividual ,
+                              :Gram ,
+                              :Rice ;
+                     :quantity 400 .
+
+
+###  http://www.semanticweb.org/ontologies/2019/0/project_giovanni#Risotto_Ingredient2
+:Risotto_Ingredient2 rdf:type owl:NamedIndividual ,
+                              :Onion ,
+                              :Unit ;
+                     :quantity 1 .
+
+
+###  http://www.semanticweb.org/ontologies/2019/0/project_giovanni#Risotto_Ingredient3
+:Risotto_Ingredient3 rdf:type owl:NamedIndividual ,
+                              :Butter ,
+                              :Gram ;
+                     :quantity 50 .
+
+
+###  http://www.semanticweb.org/ontologies/2019/0/project_giovanni#Risotto_Ingredient4
+:Risotto_Ingredient4 rdf:type owl:NamedIndividual ,
+                              :Gram ,
+                              :Parmesan_Cheese ;
+                     :quantity 60 .
+
+
+###  http://www.semanticweb.org/ontologies/2019/0/project_giovanni#Risotto_Ingredient5
+:Risotto_Ingredient5 rdf:type owl:NamedIndividual ,
+                              :Litre ,
+                              :Meat_Brooth ;
+                     :quantity 1 .
+
+
+###  http://www.semanticweb.org/ontologies/2019/0/project_giovanni#Risotto_Ingredient6
+:Risotto_Ingredient6 rdf:type owl:NamedIndividual ,
+                              :Glass ,
+                              :White_Wine ;
+                     :quantity 1 .
+
+
+###  Generated by the OWL API (version 4.5.7.2018-12-02T02:23:35Z) https://github.com/owlcs/owlapi
