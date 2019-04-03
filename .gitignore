@@ -1,0 +1,7 @@
+*.wav
+__pycache__/
+\.spyproject/
+.idea
+.vscode/settings.json
+chat_bot_repo.iml
+Files/catalog-v001.xml
