@@ -1,0 +1,435 @@
+Giovanni Dialogue Manager Tesing
+
+
+--------------------------------------------------------
+-------------------     test      ----------------------
+--------------------------------------------------------
+
+User: hi
+Giovanni:  Hello. Of course, do you hve any ingredients?
+
+
+
+##################### notes ###########################
+
+Spelling error "HVE".
+
+'of course' here only makes sense if the person explicitly 
+asked for a recipe.
+
+I think maybe if the person just says 'hello' it seems a bit
+abrupt to immediately start asking them questions about ingredients
+we should wait until they have explicitly asked for a recipe.
+Maybe the response should just be "hi, how can I help"
+or some thing like that...
+
+--------------------------------------------------------
+
+
+
+
+
+
+--------------------------------------------------------
+-------------------     test      ----------------------
+--------------------------------------------------------
+
+User: hi
+Giovanni:  Hello. What ingredients do you have to hand?
+
+User: hi
+Giovanni:  How's it going? Any particular cuisine?
+
+User: hi
+SELECT DISTINCT ?individual
+WHERE {
+  ?individual rdf:type owl:NamedIndividual .
+  ?individual rdf:type <http://www.semanticweb.org/ontologies/2019/0/project_giovanni#Recipe> .
+}
+Giovanni:  Hello. How about Resource(http://www.semanticweb.org/ontologies/2019/0/project_giovanni#Risotto)?
+
+
+
+
+##################### notes ###########################
+
+saying 'hi' 3 times and i get offered a recipe. 
+This shouldn't happen until the end of the conversation 
+
+It shouldn't print out SPARQL queries to the screen.
+
+When suggesting a recipe it should send the website link
+not the RDF URI.
+
+--------------------------------------------------------
+
+
+
+
+
+--------------------------------------------------------
+-------------------     test      ----------------------
+--------------------------------------------------------
+
+User: i want to cook something african
+
+ERROR:root:local variable 'existBool' referenced before assignment
+Traceback (most recent call last):
+
+  File "<ipython-input-1-666999dd6fd1>", line 1, in <module>
+    runfile('C:/Git in C/Natural Language Processing/chat_bot_repo/pipeline.py', args='-t', wdir='C:/Git in C/Natural Language Processing/chat_bot_repo')
+
+  File "C:\Users\Alex_User\Anaconda3\lib\site-packages\spyder_kernels\customize\spydercustomize.py", line 668, in runfile
+    execfile(filename, namespace)
+
+  File "C:\Users\Alex_User\Anaconda3\lib\site-packages\spyder_kernels\customize\spydercustomize.py", line 108, in execfile
+    exec(compile(f.read(), filename, 'exec'), namespace)
+
+  File "C:/Git in C/Natural Language Processing/chat_bot_repo/pipeline.py", line 152, in <module>
+    main(args)
+
+  File "C:/Git in C/Natural Language Processing/chat_bot_repo/pipeline.py", line 127, in main
+    response = pipeline.process_text(user_input)
+
+  File "C:/Git in C/Natural Language Processing/chat_bot_repo/pipeline.py", line 53, in process_text
+    concepts = self.analyzer.analyze(text)
+
+  File "C:\Git in C\Natural Language Processing\chat_bot_repo\analysis.py", line 858, in analyze
+    tempAnalysis_1 = self.InvestigateSentence(doc)
+
+  File "C:\Git in C\Natural Language Processing\chat_bot_repo\analysis.py", line 356, in InvestigateSentence
+    tempBool, tempTokenList = parsedText.FindLemma(thisWord)
+
+  File "C:\Git in C\Natural Language Processing\chat_bot_repo\analysis.py", line 97, in FindLemma
+    return existBool, tokenList
+
+UnboundLocalError: local variable 'existBool' referenced before assignment
+
+--------------------------------------------------------
+
+
+
+--------------------------------------------------------
+-------------------     test      ----------------------
+--------------------------------------------------------
+
+User: can you suggest a recipe
+Giovanni:  What ingredients do you have to hand?
+
+User: chicken
+Giovanni:  Do you have any preference on cuisine?
+
+User: no
+Giovanni:  I'm not sure I understood what you meant, can you try again please?
+
+##################### notes ###########################
+
+Should be able to understand that i have no cuisine preference
+and offer me any kind of cuisine which meets my ingredient requirements
+
+------------------------------------------------------
+
+
+
+
+
+--------------------------------------------------------
+-------------------     test      ----------------------
+--------------------------------------------------------
+
+
+User: hi, can you suggest a recipe
+Giovanni:  Hi. Ok, what ingredients do you have available?
+
+User: chicken
+Giovanni:  Do you like a specific cuisine type?
+
+User: g
+SELECT DISTINCT ?individual
+WHERE {
+  ?individual rdf:type owl:NamedIndividual .
+  ?individual rdf:type <http://www.semanticweb.org/ontologies/2019/0/project_giovanni#Recipe> .
+  ?ingredient0 rdf:type <http://www.semanticweb.org/ontologies/2019/0/project_giovanni#Chicken> .
+  ?individual <http://www.semanticweb.org/ontologies/2019/0/project_giovanni#hasIngredient> ?ingredient0 .
+}
+Giovanni:  Does Resource(http://www.semanticweb.org/ontologies/2019/0/project_giovanni#Paella) sound good?
+
+##################### notes ###########################
+
+here i just typed in a random letter (here 'g') to see if
+giovanni asked for clarification however it suggested paella.
+
+----------------------------------------------------
+
+
+
+--------------------------------------------------------
+-------------------     test      ----------------------
+--------------------------------------------------------
+
+
+User: can you give me a recipe suggestion
+Giovanni:  What ingredients do you have in the kitchen?
+
+User: rice
+Giovanni:  Do you like a specific cuisine type?
+
+User: yeah, italian
+Giovanni:  I didn't get that can you repeat what you just said?
+
+##################### notes ###########################
+
+i feel we should add a 'sure' or 'ok' after a request 
+for a recipe suggestion, seems impolite not to...
+
+why didn't giovanni understand "yeah, italian"?
+
+
+----------------------------------------------------
+
+
+
+--------------------------------------------------------
+-------------------     test      ----------------------
+--------------------------------------------------------
+
+User: hi
+Giovanni:  Hi there. Of course, do you hve any ingredients?
+
+User: fuck you
+Giovanni:  Alright bambino calm down. Sure, do you have a cuisine in mind?
+
+User: fuck you
+SELECT DISTINCT ?individual
+WHERE {
+  ?individual rdf:type owl:NamedIndividual .
+  ?individual rdf:type <http://www.semanticweb.org/ontologies/2019/0/project_giovanni#Recipe> .
+}
+Giovanni:  I'm too young to hear such language. I recommend paella valenciana.
+
+##################### notes ###########################
+
+swearing at it twice and it suggests paella hahaha this one is 
+a very strange response!
+
+----------------------------------------------------
+
+
+--------------------------------------------------------
+-------------------     test      ----------------------
+--------------------------------------------------------
+
+User: hi, i have chicken, can you suggest a recipe?
+ERROR:root:'tuple' object has no attribute 'transitive_objects'
+Traceback (most recent call last):
+
+  File "<ipython-input-9-666999dd6fd1>", line 1, in <module>
+    runfile('C:/Git in C/Natural Language Processing/chat_bot_repo/pipeline.py', args='-t', wdir='C:/Git in C/Natural Language Processing/chat_bot_repo')
+
+  File "C:\Users\Alex_User\Anaconda3\lib\site-packages\spyder_kernels\customize\spydercustomize.py", line 668, in runfile
+    execfile(filename, namespace)
+
+  File "C:\Users\Alex_User\Anaconda3\lib\site-packages\spyder_kernels\customize\spydercustomize.py", line 108, in execfile
+    exec(compile(f.read(), filename, 'exec'), namespace)
+
+  File "C:/Git in C/Natural Language Processing/chat_bot_repo/pipeline.py", line 152, in <module>
+    main(args)
+
+  File "C:/Git in C/Natural Language Processing/chat_bot_repo/pipeline.py", line 127, in main
+    response = pipeline.process_text(user_input)
+
+  File "C:/Git in C/Natural Language Processing/chat_bot_repo/pipeline.py", line 53, in process_text
+    concepts = self.analyzer.analyze(text)
+
+  File "C:\Git in C\Natural Language Processing\chat_bot_repo\analysis.py", line 861, in analyze
+    tempAnalysis_2 = self.__InvestigateTreeFromRoot(doc)
+
+  File "C:\Git in C\Natural Language Processing\chat_bot_repo\analysis.py", line 814, in __InvestigateTreeFromRoot
+    if self.ontologyAnalysis.is_subclass(item,self.cuisineObject):
+
+  File "C:\Git in C\Natural Language Processing\chat_bot_repo\ontology.py", line 73, in is_subclass
+    return parent_resource in resource.transitive_objects(RDFS.subClassOf)
+
+AttributeError: 'tuple' object has no attribute 'transitive_objects'
+
+
+----------------------------------------------------
+
+
+--------------------------------------------------------
+-------------------     test      ----------------------
+--------------------------------------------------------
+
+
+User: hi
+Giovanni:  How's it going? Of course, do you hve any ingredients?
+
+User: yes, i have chicken
+Giovanni:  I didn't get that can you repeat what you just said?
+
+
+##################### notes ###########################
+
+why didn't it understand?
+
+
+----------------------------------------------------
+
+
+--------------------------------------------------------
+-------------------     test      ----------------------
+--------------------------------------------------------
+
+
+
+User: cna you suggest a recipe
+Giovanni:  What ingredients do you have to hand?
+
+User: rice
+Giovanni:  Any particular cuisine?
+
+User: italian
+SELECT DISTINCT ?individual
+WHERE {
+  ?individual rdf:type owl:NamedIndividual .
+  ?individual rdf:type <http://www.semanticweb.org/ontologies/2019/0/project_giovanni#Recipe> .
+  ?ingredient0 rdf:type <http://www.semanticweb.org/ontologies/2019/0/project_giovanni#Rice> .
+  ?individual <http://www.semanticweb.org/ontologies/2019/0/project_giovanni#hasIngredient> ?ingredient0 .
+  ?individual rdf:type <http://www.semanticweb.org/ontologies/2019/0/project_giovanni#ItalianCuisine> .
+}
+Giovanni:  What about risotto?
+
+User: sure
+Giovanni:  Would you mind just clarifying that?
+
+##################### notes ###########################
+
+why is it printing out sparql?
+
+why doesn't it understand 'sure'?
+
+
+
+----------------------------------------------------
+
+
+--------------------------------------------------------
+-------------------     test      ----------------------
+--------------------------------------------------------
+
+
+User: hsthsrths
+Giovanni:  Ok, what ingredients do you have available?
+
+##################### notes ###########################
+
+here it should say it doesn't understand.
+
+
+----------------------------------------------------
+
+
+--------------------------------------------------------
+-------------------     test      ----------------------
+--------------------------------------------------------
+
+User: hi
+Giovanni:  Hey! What ingredients do you have to hand?
+
+User: rice
+Giovanni:  Sure, do you have a cuisine in mind?
+
+User: italian
+SELECT DISTINCT ?individual
+WHERE {
+  ?individual rdf:type owl:NamedIndividual .
+  ?individual rdf:type <http://www.semanticweb.org/ontologies/2019/0/project_giovanni#Recipe> .
+  ?ingredient0 rdf:type <http://www.semanticweb.org/ontologies/2019/0/project_giovanni#Rice> .
+  ?individual <http://www.semanticweb.org/ontologies/2019/0/project_giovanni#hasIngredient> ?ingredient0 .
+  ?individual rdf:type <http://www.semanticweb.org/ontologies/2019/0/project_giovanni#ItalianCuisine> .
+}
+Giovanni:  What about risotto?
+
+User: yes
+Giovanni:  Can you repeat it?
+
+
+##################### notes ###########################
+
+It should understand 'yes'.
+
+
+----------------------------------------------------
+
+
+--------------------------------------------------------
+-------------------     test      ----------------------
+--------------------------------------------------------
+
+
+User: hi
+Giovanni:  Hey! What ingredients do you have in the kitchen?
+
+User: rice
+Giovanni:  Sure, do you have a cuisine in mind?
+
+User: italian
+SELECT DISTINCT ?individual
+WHERE {
+  ?individual rdf:type owl:NamedIndividual .
+  ?individual rdf:type <http://www.semanticweb.org/ontologies/2019/0/project_giovanni#Recipe> .
+  ?ingredient0 rdf:type <http://www.semanticweb.org/ontologies/2019/0/project_giovanni#Rice> .
+  ?individual <http://www.semanticweb.org/ontologies/2019/0/project_giovanni#hasIngredient> ?ingredient0 .
+  ?individual rdf:type <http://www.semanticweb.org/ontologies/2019/0/project_giovanni#ItalianCuisine> .
+}
+Giovanni:  I recommend risotto.
+
+##################### notes ###########################
+
+Where is the link to the risotto recipe?
+
+and the clarification...
+
+
+----------------------------------------------------
+
+
+--------------------------------------------------------
+-------------------     test      ----------------------
+--------------------------------------------------------
+
+User: hi
+Giovanni:  Hey! Sure, what ingredients do you have?
+
+User: chicken
+Giovanni:  Sure, do you have a cuisine in mind?
+
+User: ffff
+SELECT DISTINCT ?individual
+WHERE {
+  ?individual rdf:type owl:NamedIndividual .
+  ?individual rdf:type <http://www.semanticweb.org/ontologies/2019/0/project_giovanni#Recipe> .
+  ?ingredient0 rdf:type <http://www.semanticweb.org/ontologies/2019/0/project_giovanni#Chicken> .
+  ?individual <http://www.semanticweb.org/ontologies/2019/0/project_giovanni#hasIngredient> ?ingredient0 .
+}
+Giovanni:  How about Resource(http://www.semanticweb.org/ontologies/2019/0/project_giovanni#Paella)?
+
+User: hi
+Giovanni:  Hi there. Enjoy your recipe https://www.lafallera.es/recetas/paella-valenciana/.
+
+User: hi
+SELECT DISTINCT ?individual
+WHERE {
+  ?individual rdf:type owl:NamedIndividual .
+  ?individual rdf:type <http://www.semanticweb.org/ontologies/2019/0/project_giovanni#Recipe> .
+  ?ingredient0 rdf:type <http://www.semanticweb.org/ontologies/2019/0/project_giovanni#Chicken> .
+  ?individual <http://www.semanticweb.org/ontologies/2019/0/project_giovanni#hasIngredient> ?ingredient0 .
+}
+Giovanni:  Hello. I'm sorry, I don't know any suitable recipe.
+
+##################### notes ###########################
+
+first it offers a recipe after a random input (i think i 
+pointed this out before...)
+
+But then when i say 'hi' again it then tells me there is no suitable recipe...

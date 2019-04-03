@@ -1,0 +1,135 @@
+test_simple
+
+analyser working correctly
+
+except to finish the conversation when it asks for risotto i need to 
+acknowledge that i want it, when i said 'ok' the respose i got was 
+
+"Can you repeat it"
+
+but the analyser correctly said my text was an agreement 
+
+ [(Resource([a rdfg:Graph;rdflib:storage [a rdflib:Store;rdfs:label 'IOMemory']].,http://www.semanticweb.org/ontologies/2019/0/project_giovanni#Person), 'agreement')]
+ 
+ 
+ 
+ 
+ 
+ -------------------------------------------------------------
+ 
+ test_triple_hi
+ 
+ each 'hi' is correctly understood:
+ 
+ [(Resource([a rdfg:Graph;rdflib:storage [a rdflib:Store;rdfs:label 'IOMemory']].,http://www.semanticweb.org/ontologies/2019/0/project_giovanni#Person), 'greeting')]
+ 
+ 
+ ------------------------------------------------------------
+ 
+ test_cuisine_no
+
+ Doesn't really make sense to respond with a 'no' when asked what cuisine you like...
+I've added the words 'any', and 'either ' to 'indifferencePhrases' in analysis
+ 
+ here the analyser correctly understood the indifference :
+ 
+ [(Resource([a rdfg:Graph;rdflib:storage [a rdflib:Store;rdfs:label 'IOMemory']].,http://www.semanticweb.org/ontologies/2019/0/project_giovanni#Person), 'indifferent')]
+ 
+ but giovanni didn't understand:
+
+"Can you say that again?" 
+
+
+---------------------------------------------------------------
+test_cuisine_g
+
+
+Here when i types 'g' there were no concepts captured (which makes sense i think)
+
+concepts =  []
+
+but giovanni suggested paella, whereas it should have requested more information
+or asked for you to repeat/clarify.
+
+----------------------------------------------------
+test_cuisine_italian
+
+when the user said "yeah, italian" the analyser correctly 
+found both 'agreement' and 'wantsRelationship' to italian cuisine:
+
+concepts =  [(Resource([a rdfg:Graph;rdflib:storage [a rdflib:Store;rdfs:label 'IOMemory']].,http://www.semanticweb.org/ontologies/2019/0/project_giovanni#Person), 'agreement'), (Resource([a rdfg:Graph;rdflib:storage [a rdflib:Store;rdfs:label 'IOMemory']].,http://www.semanticweb.org/ontologies/2019/0/project_giovanni#Person), 'WantsRelationship', Resource([a rdfg:Graph;rdflib:storage [a rdflib:Store;rdfs:label 'IOMemory']].,http://www.semanticweb.org/ontologies/2019/0/project_giovanni#ItalianCuisine))]
+
+
+
+----------------------------------------------------
+
+test_hi_fuck_you
+
+In both cases the analysis correctly picked out the swearing :
+
+concepts =  [(Resource([a rdfg:Graph;rdflib:storage [a rdflib:Store;rdfs:label 'IOMemory']].,http://www.semanticweb.org/ontologies/2019/0/project_giovanni#Person), 'swearing')]
+
+
+-----------------------------------------------------
+
+test_hi_chicken
+
+
+This was the list comprehension problem i told you about, it has now been solved
+and the analysis picks up both 'want' recipe, and 'has' chicken.
+
+concepts =  [(Resource([a rdfg:Graph;rdflib:storage [a rdflib:Store;rdfs:label 'IOMemory']].,http://www.semanticweb.org/ontologies/2019/0/project_giovanni#Person), 'greeting'), (Resource([a rdfg:Graph;rdflib:storage [a rdflib:Store;rdfs:label 'IOMemory']].,http://www.semanticweb.org/ontologies/2019/0/project_giovanni#Person), 'wants', Resource([a rdfg:Graph;rdflib:storage [a rdflib:Store;rdfs:label 'IOMemory']].,http://www.semanticweb.org/ontologies/2019/0/project_giovanni#Recipe)), (Resource([a rdfg:Graph;rdflib:storage [a rdflib:Store;rdfs:label 'IOMemory']].,http://www.semanticweb.org/ontologies/2019/0/project_giovanni#Person), 'HasRelationship', Resource([a rdfg:Graph;rdflib:storage [a rdflib:Store;rdfs:label 'IOMemory']].,http://www.semanticweb.org/ontologies/2019/0/project_giovanni#Chicken))]
+
+after i say "I like italian cuisine."
+
+the analyser correctly found 'wants' cuisine and 'wants' italianCuisine
+
+concepts =  [(Resource([a rdfg:Graph;rdflib:storage [a rdflib:Store;rdfs:label 'IOMemory']].,http://www.semanticweb.org/ontologies/2019/0/project_giovanni#Person), 'WantsRelationship', Resource([a rdfg:Graph;rdflib:storage [a rdflib:Store;rdfs:label 'IOMemory']].,http://www.semanticweb.org/ontologies/2019/0/project_giovanni#ItalianCuisine)), (Resource([a rdfg:Graph;rdflib:storage [a rdflib:Store;rdfs:label 'IOMemory']].,http://www.semanticweb.org/ontologies/2019/0/project_giovanni#Person), 'WantsRelationship', Resource([a rdfg:Graph;rdflib:storage [a rdflib:Store;rdfs:label 'IOMemory']].,http://www.semanticweb.org/ontologies/2019/0/project_giovanni#Cuisine))]
+
+Then it says it doesn't know any suitable recipes, but i suspect this is because we just need to fill
+
+------------------------------------------------------
+
+test_hi_have_chicken
+
+can't see a problem, i said i had chicken, the analysis understood
+
+and i think giovanni understood too as it asked me for cuisine
+i then ased for african, it understood that i asked for african cuisine
+
+
+
+
+-------------------------------------------------------
+
+test_sure
+
+
+when i say 'sure' the analyser correctly found agreement 
+
+[(Resource([a rdfg:Graph;rdflib:storage [a rdflib:Store;rdfs:label 'IOMemory']].,http://www.semanticweb.org/ontologies/2019/0/project_giovanni#Person), 'agreement')]
+
+but giovanni didn't understand and asked for clarification. He should have provided 
+the link.
+
+-------------------------------------------------------
+
+test_yes
+
+
+when i say 'yes' the analyser correctly found agreement 
+
+[(Resource([a rdfg:Graph;rdflib:storage [a rdflib:Store;rdfs:label 'IOMemory']].,http://www.semanticweb.org/ontologies/2019/0/project_giovanni#Person), 'agreement')]
+
+but giovanni didn't understand and asked for clarification. He should have provided 
+the link.
+
+
+
+
+
+
+
+
+
+
